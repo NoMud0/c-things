@@ -3,29 +3,40 @@
 #include <string.h>
 
 char string[] = "hello world";
-int bin[] = { 0 };
 
-int not_split(char *s, int *b)
+int *charbitmask(char *string, char c)
 {
     int i = 0;
-    while(s[i])
+    int *b = malloc(strlen(string)*sizeof(int));
+    while(string[i])
     {
-        bin[i] = (s[i]!=' ')?1:0;
+        b[i] = (string[i]==c)?1:0;
         i++;
+    }
+    return b;
+}
+
+int reversebitmask(int *a)
+{
+    for(int i = 0; i < strlen(string); i++)
+    {
+        a[i] = !a[i];
     }
     return 0;
 }
 
-int iter()
+int printbitmask(int *bin)
 {
-    
+    for(int i = 0; i < strlen(string); i++)
+    {
+        printf("%d", bin[i]);
+    }
     return 0;
 }
 
 void main()
 {
-    not_split(string, bin);
-    for(int i = 0; i < strlen(string); i++){
-        printf("%d", bin[i]);
-    }
+    int *bin = charbitmask(string, ' ');
+    reversebitmask(bin);
+    printbitmask(bin);
 }
