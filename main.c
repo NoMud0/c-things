@@ -2,6 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+struct bitmakssize
+{
+    size_t size;
+    int *bin;
+    
+};
+
 char string[] = "hello world";
 
 int *charbitmask(char *string, char c)
@@ -10,7 +17,7 @@ int *charbitmask(char *string, char c)
     int *b = malloc(strlen(string)*sizeof(int));
     while(string[i])
     {
-        b[i] = (string[i]==c)?1:0;
+        b[i] = (string[i] == c)?1:0;
         i++;
     }
     return b;
@@ -31,6 +38,7 @@ int printbitmask(int *bin)
     {
         printf("%d", bin[i]);
     }
+    printf("\n");
     return 0;
 }
 
@@ -39,4 +47,5 @@ void main()
     int *bin = charbitmask(string, ' ');
     reversebitmask(bin);
     printbitmask(bin);
+    printf("%lu\n", sizeof(bin));
 }
