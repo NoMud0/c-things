@@ -11,32 +11,32 @@ struct bitmakssize
 
 char string[] = "hello world";
 
-int *charbitmask(char *string, char c)
+int *charbitmask(char *s, char c)
 {
     int i = 0;
     int *b = malloc(strlen(string)*sizeof(int));
-    while(string[i])
+    while(s[i])
     {
-        b[i] = (string[i] == c)?1:0;
+        b[i] = (s[i] == c)?1:0;
         i++;
     }
     return b;
 }
 
-int reversebitmask(int *a)
+int *reversebitmask(int *b)
 {
     for(int i = 0; i < strlen(string); i++)
     {
-        a[i] = !a[i];
+        b[i] = !b[i];
     }
-    return 0;
+    return b;
 }
 
-int printbitmask(int *bin)
+int printbitmask(int *b)
 {
     for(int i = 0; i < strlen(string); i++)
     {
-        printf("%d", bin[i]);
+        printf("%d", b[i]);
     }
     printf("\n");
     return 0;
@@ -56,8 +56,6 @@ char *bitmaskreplace(int *b, char true_, char false_)
 
 void main()
 {
-    int *bin = charbitmask(string, ' ');
-    reversebitmask(bin);
-    char *replaced = bitmaskreplace(bin, 'r', 'B');
+    char *replaced = bitmaskreplace(reversebitmask(charbitmask(string, ' ')), 'r', 'B');
     printf("%s\n", replaced);
 }
