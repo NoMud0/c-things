@@ -42,7 +42,7 @@ int printbitmask(int *bin)
     return 0;
 }
 
-int *bitmaskreplace(int *b, char true_, char false_)
+char *bitmaskreplace(int *b, char true_, char false_)
 {
     int i = 0;
     for(;i < strlen(string);)
@@ -51,15 +51,13 @@ int *bitmaskreplace(int *b, char true_, char false_)
         i++;
     }
     string[i] = '\0';
-    return 0;
+    return string;
 }
 
 void main()
 {
     int *bin = charbitmask(string, ' ');
     reversebitmask(bin);
-    printbitmask(bin);
-    bitmaskreplace(bin, 'r', 'B');
-    printf("%s\n", string);
-    printf("%lu\n", sizeof(bin));
+    char *replaced = bitmaskreplace(bin, 'r', 'B');
+    printf("%s\n", replaced);
 }
