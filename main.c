@@ -14,7 +14,7 @@ char string[] = "hello world";
 int *charbitmask(char *s, char c)
 {
     int i = 0;
-    int *b = malloc(strlen(string)*sizeof(int));
+    int *b = malloc(strlen(s)*sizeof(int));
     while(s[i])
     {
         b[i] = (s[i] == c)?1:0;
