@@ -2,15 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct bitmakssize
-{
-    size_t size;
-    int *bin;
-    
-};
-
-char string[] = "hello world";
-
 int *charbitmask(char *s, char c)
 {
     int i = 0;
@@ -54,8 +45,9 @@ char *bitmaskreplace(int *b, char true_, char false_)
     return string;
 }
 
-void main()
+void main(int argc, char *argv[])
 {
+    char string[] = "hello world";
     char *replaced = bitmaskreplace(reversebitmask(charbitmask(string, ' ')), 'r', 'B');
     printf("%s\n", replaced);
 }
